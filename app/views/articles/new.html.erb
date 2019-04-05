@@ -1,9 +1,16 @@
 <h1>New article</h1>
 
-<%= form_for :article do |f| %>
+<%= form_for :article, url: '/articles' do |f| %> <!--articles_path  вместо /articles-->
 	<p>
 		<%= f.label :title %>
 		 <%= f.text_field :title %>		
+	</p>
+	<p>
+		<%= f.label :text %>
+		 <%= f.text_area :text %>		
+	</p>
+	<p>
+		<%= f.submit %>
 	</p>
 
 	<% end %>
