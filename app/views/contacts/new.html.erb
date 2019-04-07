@@ -1,24 +1,16 @@
 <h2>leave your contacts, pls!</h2>
 
-<form action="/home/contacts" method="POST" role="form">
-    
-   
-    <div class="form-group">
-      <label>Ваше имя:</label>
-      <input name="contact[name]" type="text" class="form-control" style="width: 200px"  placeholder="Сюда имя можно вбить">
-    </div>
-<br/>
-    <div class="form-group">
-      <label>E-mail:</label>
-      <input name="contact[email]" type="Email" class="form-control" placeholder="Контактный E-mail">
-    </div>
-<br/>
-	<div>
-    	<textarea placeholder="Ваше сообщение" ></textarea>
-    </div>
-<br/>
-    <div>
-    	<button type="submit" class="btn btn-primary">Отправить</button>
-    </div>
-    
-</form>
+<%= form_for :contact, url: '/contacts' do |f| %> <!--contacts_path  вместо /articles-->
+  <p>
+    <%= f.label :email %><br/> 
+     <%= f.text_field :email %>   
+  </p>
+  <p>
+    <%= f.label :message %><br/>
+     <%= f.text_area :message %>   
+  </p>
+  <p>
+    <%= f.submit 'Send message' %>
+  </p>
+
+  <% end %>
