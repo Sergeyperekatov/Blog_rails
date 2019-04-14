@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
 
 def create
   @article = Article.find(params[:article_id])
-  @article.comments.create({autor: 'Mike', body: 'Hello'})
+  @article.comments.create(comment_params)
 
   redirect_to article_path(@article)
 end
