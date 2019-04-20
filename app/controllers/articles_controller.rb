@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
 
-before_filter :authenticate_user
+#before_action :authenticate_api_user!, only: [ :create ]
 
 	def index
 		@articles = Article.all
