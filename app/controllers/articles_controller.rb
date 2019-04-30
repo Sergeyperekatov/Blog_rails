@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
 
 
-	before_action :authenticate_user! :only => [:create]
+	before_action :authenticate_user!, :only => [:new, :create, :edit, :update, :destroy]
 	def index
 		@articles = Article.all
 	end
