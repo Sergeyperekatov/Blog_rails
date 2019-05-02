@@ -5,30 +5,47 @@
 
 <h2>Comments:</h2>
 
-<% @article.comments.each do |comment| %>
-<p>
-<i><%= comment.autor %> said:</i><br />
+  <% @article.comments.each do |comment| %>
+    <p>
+      <i><%= current_user.username %> said:</i>
+      <br />
+      <%= comment.body %>
+      <hr>
 
-<%= comment.body %>
+    </p>
+
+    <script type="text/javascript">
+    var date = new Date();
+    var options = {
+
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: 'numeric',
+       minute: 'numeric'
+
+    };
+
+    document.write ( date.toLocaleString("ru", options));
+ 
+  </script>
+  <% end %>
   
-
-</p>
-<% end %>
-<hr>
+      <hr>
 
 <h2>Add Comment</h2>
 
-<%= form_for([@article,@article.comments.build])  do |f| %> 
+<%= bootstrap_form_for([@article,@article.comments.build])  do |f| %> 
   <p>
-    <%= f.label :autor %>
-     <%= f.text_field :autor %>   
+    <%= current_user.username %>
+     
   </p>
   <p>
-    <%= f.label :body %>
-     <%= f.text_area :body %>   
+    <!--<%= f.label :body %> -->
+     <%= f.text_area :body, hide_label: true, placeholder: "Leave a comment..." %>   
   </p>
   <p>
-    <%= f.submit %>
+    <%= f.submit "Send" %>
   </p>
 
   <% end %>
