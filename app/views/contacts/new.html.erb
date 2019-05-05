@@ -1,4 +1,5 @@
-<h2>leave your contacts, pls!</h2>
+<div align="center">
+<h2><%= t('contacts.contact_us') %></h2>
 
 <%= form_for :contact, url: '/contacts' do |f| %> <!--contacts_path  вместо /articles-->
  <% if @contact && @contact.errors.any? %>
@@ -20,7 +21,8 @@
      <%= f.text_area :message %>   
   </p>
   <p>
-    <%= f.submit 'Send message' %>
+    <%= f.submit 'Отправить' %>
   </p>
 
   <% end %>
+</div>

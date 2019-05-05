@@ -1,6 +1,6 @@
 class Article < ApplicationRecord
-	validates :title, presence: true
-  validates :text, presence: true
+	validates :title, length: { maximum: 140 }, presence: true
+  validates :text, length: { maximum: 4000 }, presence: true
  has_many :comments, dependent: :delete_all
 
   def subject
