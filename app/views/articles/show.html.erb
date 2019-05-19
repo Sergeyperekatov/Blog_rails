@@ -10,7 +10,7 @@
       <i><%= current_user.username %> said:</i>
       <br />
       <%= comment.body %><br />
-      <%= comment.DateTime.current %><hr>
+      <%= comment.created_at.strftime('%F в %H:%M ') %><hr> <!-- https://stackoverflow.com/questions/22255476/rails-formatting-date шпора по выводу времени -->
 
     </p>
 
