@@ -4,12 +4,14 @@
 <h2><%= article.title %></h2>
 
 <p><%= article.text %></p>
+<p><i>Добавлено:<%= article.created_at.strftime('%F в %H:%M ')%></i></p>
 
-<p>
+<div>
 	<%= link_to 'Show', article_path(article) %> |
 	<%= link_to 'Edit', edit_article_path(article) %> |
   <%= link_to 'Destroy', article_path(article), method: :delete, data: {confirm: 'Are you sure?'} %>
-</p>
+
+</div>
 
 <hr/>
 
