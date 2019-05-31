@@ -10,6 +10,6 @@ end
 private
 
 def comment_params
-    params.require(:comment).permit(:autor, :body)
+    params.require(:comment).permit(:user_id, :body, :article_id)
   end
 end

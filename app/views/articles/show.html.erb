@@ -1,34 +1,35 @@
 <h1><%= @article.title %></h1>
 
 <p><%= @article.text %></p>
-<hr>
+<hr><br />
 
-<h2>Comments:</h2>
+<!--<h2>Комментарии:</h2>-->
+
+<%= 'Без комментариев' if @article.comments.empty? %>
 
   <% @article.comments.each do |comment| %>
-    <p>
-      <i><%= current_user.username %> said:</i>
-      <br />
-      <%= comment.body %><br />
-      <%= comment.created_at.strftime('%F в %H:%M ') %><hr> <!-- https://stackoverflow.com/questions/22255476/rails-formatting-date шпора по выводу времени -->
-
-    </p>
-
+    <p><strong>Автор:</strong> </p>
     
-  <% end %>
-  
-      <hr>
+    <p><%= comment.body %></p><br />
+    
+    <p><i>Добавлено: <%= comment.created_at.strftime('%F в %H:%M ') %>
 
-<h2>Add Comment</h2>
+          
+    </p><hr>    <!-- https://stackoverflow.com/questions/22255476/rails-formatting-date шпора по выводу времени --> 
+      
+  <% end %>
+  <hr><br />
+
+<h2>Комментарии</h2>
 
 <%= bootstrap_form_for([@article,@article.comments.build])  do |f| %> 
   <p>
     <%= current_user.username %>
-     
+    скажет: 
   </p>
   <p>
     <!--<%= f.label :body %> -->
-     <%= f.text_area :body, hide_label: true, placeholder: "Leave a comment..." %>   
+     <%= f.text_area :body, hide_label: true, placeholder: "Новый комментарий" %>   
   </p>
   <p>
     <%= f.submit "Отправить" %>
