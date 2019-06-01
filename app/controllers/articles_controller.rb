@@ -23,7 +23,7 @@ class ArticlesController < ApplicationController
 		
 		if @article.save
 			redirect_to @article
-		else
+			else
 			render action:'new' # method render возврат new 
 		end
 	end
@@ -35,17 +35,21 @@ class ArticlesController < ApplicationController
 	def update
 		@article = Article.find(params[:id])
 	
-		if @article.update(article_params)
+		if current_user == @article.user 
+			@article.update(article_params)
 			redirect_to @article
-		else
-			render action:'edit' # method render возврат new 
+			else
+			render html: helpers.tag.strong('Вы не являетесь автором этой статьи')
 		end
 	end
 
 	def destroy
-		@article = Article.find(params[:id])
-		@article.destroy
-		redirect_to articles_path
+		@article=Article.find(params[:id]) 
+    if 	current_user == @article.user 
+				@article.destroy 
+				redirect_to articles_path
+			else render html: helpers.tag.strong('Вы не являетесь автором этой статьи')
+		end
 	end
 
 	private
